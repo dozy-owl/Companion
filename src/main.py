@@ -16,12 +16,10 @@ class Task(ft.Container):
 
     def init(self):
         self.completed = False
-        
         self.padding = 15
         self.border_radius = 10
         self.bgcolor = ft.Colors.SURFACE_CONTAINER_HIGHEST
         self.margin = ft.Margin(bottom=5)
-        
         self.on_click = self.card_clicked
 
         self.display_task = ft.Checkbox(
@@ -95,7 +93,6 @@ class Task(ft.Container):
 class CompanionApp(ft.Column):
     def init(self):
         self.expand = True 
-        
         self.tasks_list = ft.ListView(expand=True, spacing=10, padding=10)
 
         self.filter = ft.TabBar(
@@ -115,7 +112,6 @@ class CompanionApp(ft.Column):
         )
 
         self.session_view = ft.Container(expand=True, visible=False)
-
         self.width = 600
         
         self.controls = [
@@ -124,7 +120,6 @@ class CompanionApp(ft.Column):
             self.session_view,
         ]
 
-    # --- ЭКРАН СЕССИИ ---
     def start_session(self, task: Task):
         self.filter_tabs.visible = False
         self.tasks_list.visible = False
@@ -205,7 +200,6 @@ class CompanionApp(ft.Column):
             
         self.update()
 
-    # --- ОКНО ПРОСМОТРА ЗАДАЧИ ---
     def show_task_details(self, task: Task):
         steps_controls = []
         if task.steps:
@@ -263,7 +257,6 @@ class CompanionApp(ft.Column):
 
         self.page.show_dialog(dialog)
 
-    # --- ОКНО СОЗДАНИЯ / РЕДАКТИРОВАНИЯ ---
     def open_task_dialog(self, e, task: Task = None):
         is_edit = task is not None
         
